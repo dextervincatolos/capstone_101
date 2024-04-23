@@ -45,7 +45,7 @@ if(isset($_POST['login']))
 if(isset($_POST['userSignOutBtn']))
 {
     // Update loginStatus to 'offline' when signing out
-    mysqli_query($connection, "UPDATE faculty_tbl SET faculty_login_status='online' WHERE facultyID=".$_SESSION['uid']);
+    mysqli_query($connection, "UPDATE faculty_tbl SET faculty_login_status='Offline' WHERE facultyID=".$_SESSION['uid']);
 
     session_destroy();
     unset($_SESSION['uid']);

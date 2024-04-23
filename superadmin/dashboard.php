@@ -41,6 +41,44 @@ include('includes/navbar.php');
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p> System Management <i class="right fas fa-angle-left"></i> </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="student_tbl.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Policy</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="faculty_tbl.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Course/Program</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="admin_user_tbl.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Class Sections</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="admin_user_tbl.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Events</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="admin_user_tbl.php" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Organization</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p> Users Record <i class="right fas fa-angle-left"></i> </p>
                         </a>
@@ -137,7 +175,7 @@ include('includes/navbar.php');
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>
                             </div>
-                            <a href="user_province.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="student_tbl.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./Students -->
@@ -186,6 +224,100 @@ include('includes/navbar.php');
                    
                 </div>
                 <!-- ./Small boxes (Stat box) -->
+
+                <div class="row">
+                    <!-- health chart -->
+                    <div class="col-md-6">
+                        <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Chart 1</h3>
+
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                            <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <!-- educ chart -->
+                    <div class="col-md-6">
+                        <div class="card card-info card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Chart 2</h3>
+
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                            <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <!-- agri chart -->
+                    <div class="col-md-6">
+                        <div class="card card-secondary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Chart 3</h3>
+
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                            <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
+                    <!-- livelihood chart -->
+                    <div class="col-md-6">
+                        <div class="card card-warning card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Chart 4</h3>
+
+                            <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                            <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <!-- /.row -->
 
             </div><!-- /.container-fluid -->
         </section>

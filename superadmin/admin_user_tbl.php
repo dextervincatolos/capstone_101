@@ -10,7 +10,7 @@ include('includes/navbar.php');
         
         <!-- Brand Logo -->
         <a href="dashboard.php" class="brand-link">
-            <img src="../assets/img/school-logo.png" alt="St. Joseph College Logo" class="brand-image img-circle elevation-3">
+            <img src="../assets/img/cics-logo.png" alt="cics-logo" class="brand-image img-circle elevation-3">
             <span class="brand-text font-weight-bold">St. Joseph College</span>
         </a>
 
@@ -131,7 +131,7 @@ include('includes/navbar.php');
                 <!-- /.card-header -->
                 <div class="card-body">
                     <a class="btn btn-primary float-right" data-toggle="modal" data-target="#adduserprofile">
-                        <i class="fas fa-user-plus fa-sm text-white-50"></i> Add User 
+                        <i class="fas fa-user-plus fa-sm text-white-50"></i> Add Admin-user
                     </a>
                     <br>
                     <hr>
@@ -146,27 +146,47 @@ include('includes/navbar.php');
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="#" method="POST">
+                            <form action="register_faculty.php" method="POST">
                                 <div class="modal-body">
+                                    
                                     <div class="row">
-                                        <div class="form-group col-md-3" >
+                                    <div class="form-group col-md-4" >
+                                            <label> 
+                                                First Name
+                                                <span class="text-bold text-sm text-danger">*</span> 
+                                            </label>
+                                            <input type="text" name="fname" id="fname" class="form-control" required placeholder="First name">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label> 
+                                                Middle Name 
+                                                <span class="text-bold text-sm text-danger">* </span>
+                                            </label>
+                                            <input type="text" name="mname" id="mname" class="form-control" required placeholder="Middle name">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label> 
+                                                Last Name
+                                                <span class="text-bold text-sm text-danger">*</span> 
+                                            </label>
+                                            <input type="text" name="lname" id="lname" class="form-control" required placeholder="Last name">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label> 
+                                                Suffix 
+                                            </label>
+                                            <input type="text" name="suffix" id="suffix" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-2" >
                                             <label> 
                                                 Faculty ID
                                                 <span class="text-bold text-sm text-danger">*</span> 
                                             </label>
-                                            <input type="text" name="facultyNum" id="facultyNum" class="form-control" required placeholder="Faculty ID number">
+                                            <input type="text" name="facultyNum" id="facultyNum" class="form-control" required placeholder="ID number">
                                         </div>
-                                        <div class="form-group col-md-9">
-                                            <label> 
-                                                Faculty Name 
-                                                <span class="text-bold text-sm text-danger">* </span>
-                                                <i class="text-italic text-sm text-danger"> (Write complete name)</i> 
-                                            </label>
-                                            <input type="text" name="facultyName" id="facultyName" class="form-control" required placeholder="Enter Faculty Name">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
+                                        <div class="form-group col-md-10">
                                         <label> 
                                             Faculty Address 
                                             <span class="text-bold text-sm text-danger">* </span>
@@ -174,9 +194,12 @@ include('includes/navbar.php');
                                         </label>
                                         <input type="text" name="facultyAddress" id="facultyAddress" class="form-control" required placeholder="Enter Faculty Address">
                                     </div>
+                                    </div>
+                                    
+                                    
 
                                     <div class="row">
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
                                             <label> Gender <span class="text-bold text-sm text-danger">*</span></label>
                                             <select class="form-control select2" name="gender" id="gender" required aria-label="gender" required>
                                                 <option selected="selected" selected disabled>Select Gender</option>
@@ -185,14 +208,15 @@ include('includes/navbar.php');
                                                         
                                             </select>
                                         </div>
-                                       
-                                        <div class="form-group col-md-4">
-                                            <label> Age <span class="text-bold text-sm text-danger">* </span></label>
-                                            <input type="number" name="age" id="age" class="form-control" placeholder="Enter Age" required>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label> Birth date <span class="text-bold text-sm text-danger">*</span> </label>
-                                            <input type="date" name="bday" id="bday" class="form-control"  max="<?php echo date('Y-m-d'); ?>" required >
+
+                                        <div class="form-group col-md-6">
+                                            <label> Faculty Role <span class="text-bold text-sm text-danger">*</span></label>
+                                            <select class="form-control select2" name="role" id="role" required aria-label="role">
+                                                <option selected="selected" selected disabled>Select Role</option>
+                                                <option value="Dean">College Dean </option>
+                                                <option value="Adviser"> Class Adviser </option>
+                                                        
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -204,16 +228,6 @@ include('includes/navbar.php');
                                         <label>Email <span class="text-bold text-sm text-danger">*</span> </label>
                                             <input type="email" name="email" id="email" class="form-control checking_email" required placeholder="Enter Email">
                                             <small class="error_email" style="color: red;"></small>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <label> Faculty Role <span class="text-bold text-sm text-danger">*</span></label>
-                                            <input type="text" name="role" id="role" class="form-control" value="Registrar" readonly>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label> Teaching Status <span class="text-bold text-sm text-danger">*</span></label>
-                                            <input class="form-control" type="text" name="status" id="status" value="N/A" readonly>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -233,7 +247,7 @@ include('includes/navbar.php');
                                 </div>
 
                                 <div class="modal-footer">
-                                    <h6 class="text-danger">This account can only add REGISTRAR admin-user accounts<span class="text-bold text-sm text-danger">* </span></h6>
+                                    
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     <button type="submit" name="submitForm" class="btn btn-primary">Save</button>
                                 </div>

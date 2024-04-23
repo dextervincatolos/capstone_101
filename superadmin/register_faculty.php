@@ -6,22 +6,21 @@ include('sessions.php');
 if(isset($_POST['submitForm']))
 {
     $faculty_id = $_POST['facultyNum'];
-    $faculty_name = $_POST['facultyName'];
+    $faculty_fname = $_POST['fname'];
+    $faculty_mname = $_POST['mname'];
+    $faculty_lname = $_POST['lname'];
+    $faculty_suffix = $_POST['suffix'];
     $faculty_address = $_POST['facultyAddress'];
     $faculty_gender = $_POST['gender'];
-    $faculty_age = $_POST['age'];
-    $faculty_bday = $_POST['bday'];
     $faculty_contact = $_POST['contact'];
     $faculty_email = $_POST['email'];
     $faculty_role = $_POST['role'];
-    $faculty_teaching_status = $_POST['status'];
     $faculty_password = $_POST['password'];
     $faculty_confirmPassword = $_POST['confirmPassword'];
     $userStatus = $_POST['loginStatus'];
-    $encoded=$_SESSION['username'];
 
     
-    $email_exist = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE facultyEmail = '$faculty_email' ");
+    $email_exist = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE faculty_email = '$faculty_email' ");
 
     if (mysqli_num_rows($email_exist) > 0)
     {
@@ -32,21 +31,22 @@ if(isset($_POST['submitForm']))
     }
     else
     {
-         // for security purposes, only 2 registrar account is allowed.
-        $admin_user_account = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE facultyRole = '$faculty_role'");
+         // for security purposes, only 1 support account is allowed.
+        $admin_user_account = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE faculty_role = 'Support'");
                     
-        if (mysqli_num_rows($admin_user_account) > 2)
+        if (mysqli_num_rows($admin_user_account) > 1)
         {
-            $_SESSION['status'] = "You can only add 2 Registrar acccounts.";
+            $_SESSION['status'] = "You cannot add another support account.";
             $_SESSION['status_code'] = "warning";
             header('Location: admin_user_tbl.php');
         }
         else 
         {
+            
             // regex pattern for email
             $emailPattern = '/^([a-zA-z0-9\.]+@+[a-zA-Z]+(\.)+[a-zA-Z]{2,3})$/';
 
-            if(preg_match($faculty_email, $emailPattern))
+            if(!preg_match($emailPattern, $faculty_email))
             {
                 $_SESSION['status'] = "Email is Invalid.";
                 $_SESSION['status_code'] = "warning";
@@ -54,7 +54,7 @@ if(isset($_POST['submitForm']))
             }
             else 
             {
-                $faculty_id_exist = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE facultyIdnumber = '$faculty_id' ");
+                $faculty_id_exist = mysqli_query($connection, "SELECT * FROM faculty_tbl WHERE faculty_number = '$faculty_id' ");
                
 
                 if (mysqli_num_rows($faculty_id_exist) > 0)
@@ -85,8 +85,8 @@ if(isset($_POST['submitForm']))
                         { 
                             $enc_password = password_hash($faculty_password, PASSWORD_DEFAULT);
                 
-                            $insertRecord = "INSERT INTO faculty_tbl (facultyIdnumber, facultyName, facultyAddress, facultyGender, FacultyAge, facultyBday, facultyContact, facultyEmail, facultyStatus, facultyRole, assignedDepartment, facultyPassword, loginStatus, added_by) 
-                                    VALUES ('$faculty_id', '$faculty_name', '$faculty_address', '$faculty_gender', '$faculty_age', '$faculty_bday', '$faculty_contact', '$faculty_email', '$faculty_teaching_status', '$faculty_role', '', '$enc_password', 'Offline', '$encoded')";
+                            $insertRecord = "INSERT INTO faculty_tbl (faculty_number, faculty_fname, faculty_mname,faculty_lname,faculty_sname, faculty_address, faculty_gender, faculty_contact, faculty_email,  faculty_role, faculty_password, faculty_login_status) 
+                                    VALUES ('$faculty_id', '$faculty_fname', '$faculty_mname', '$faculty_lname', '$faculty_suffix', '$faculty_address', '$faculty_gender', '$faculty_contact', '$faculty_email', '$faculty_role', '$enc_password', 'Offline')";
                             $query_run = mysqli_query($connection, $insertRecord);
 
                             if($query_run)
