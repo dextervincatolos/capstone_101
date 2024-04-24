@@ -10,8 +10,7 @@ include('includes/navbar.php');
         <!-- Brand Logo -->
         <a href="dashboard.php" class="brand-link">
             <img src="../assets/img/cics-logo.png" alt="CICS logo" class="brand-image img-circle elevation-3">
-            <span class="brand-text font-weight-bold">CICS Department
-            </span>
+            <span class="brand-text font-weight-bold"><?php echo $college; ?> </span>
         </a>
 
         <!-- sidebar divider -->
@@ -46,7 +45,7 @@ include('includes/navbar.php');
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="student_tbl.php" class="nav-link">
+                                <a href="create_policy.php" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Policy</p>
                                 </a>

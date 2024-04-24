@@ -61,6 +61,68 @@
 <!-- SweetAlert -->
 <script src="../assets/js/sweetalert.min.js"></script>
 
+<script>
+      
+      $(document).ready(function(){
+
+        $(".create_new_rule").click(function(e){
+            e.preventDefault();
+            $("#add_rule").append(`<div class="row">
+                                    <div class="form-group col-md-8">
+                                      <input type="text" name="policy_rule[]" class="form-control" required placeholder="Write rule here">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <select class="form-control" name="rule_gender[]" id="">
+                                        <option value="">Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <button class="form-control btn btn-danger btn-sm discard_new_rule"> Discard Rule</button>
+                                    </div>
+                                  </div>`);
+        });
+        $(document).on('click', '.discard_new_rule', function(e){
+            e.preventDefault();
+            let row_children = $(this).parent().parent();
+            $(row_children).remove();
+        });
+
+
+
+
+        $(".create_new_sanction").click(function(e){
+            e.preventDefault();
+            $("#add_sanction").append(`<div class="row">
+                                    <div class="form-group col-md-8">
+                                      <input type="text" name="policy_sanction[]" id="contact" class="form-control" required placeholder="Write rule here">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                      <select class="form-control" name="sanction_gender[]" id="">
+                                        <option value="">Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <button class="form-control btn btn-danger btn-sm discard_new_sanction"> Remove</button>
+                                    </div>
+
+                                        </div>`);
+        });
+        $(document).on('click', '.discard_new_sanction', function(e){
+            e.preventDefault();
+            let row_children = $(this).parent().parent();
+            $(row_children).remove();
+        });
+
+
+
+
+    });
+</script>
+
 <?php
   if(isset($_SESSION['status']) && $_SESSION['status'] !='')
   {
